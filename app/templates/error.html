@@ -1,0 +1,24 @@
+{% extends "box.html" %}
+{% block body %}
+<div id="layoutAuthentication">
+	<div id="layoutAuthentication_content">
+		<main>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-5">
+						<div class="card border-0 rounded-lg mt-4">
+							<div class="card-header bg-warning text-center text-white border-warning border-bottom-0">
+								<i class="fa fa-exclamation-triangle" style="font-size: 2.2rem;"></i>
+								<h5 class="font-weight-light mt-2 mb-0">{{ title }}</h5>
+							</div>
+							<div class="card-body border border-top-0">
+								{{ message }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+{% endblock body %}

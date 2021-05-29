@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block body %}
+<div class="card mb-4">
+	<div class="card-body p-0">
+		<form method="POST">
+			<div class="p-3 border-bottom">
+				{% include "flash.html" %}
+				<div class="form-group">
+					<label>Password Lama</label>
+					<input name="password_old" type="password" class="form-control"/>
+				</div>
+				<div class="form-group mb-0">
+					<label>Password Baru</label>
+					<input name="password_new" type="password" class="form-control"/>
+					<small class="form-text text-muted">Kosongkan jika tidak ingin mengubah password</small>
+				</div>
+			</div>
+			<div class="p-3">
+				<div class="form-group">
+					<label>Nama Lengkap</label>
+					<input name="nama_lengkap" type="text" class="form-control" value="{{ data.user.nama_lengkap or "" }}" required/>
+				</div>
+				<div class="form-group">
+					<label>Jenis Kelamin</label>
+					<select name="jenis_kelamin" class="form-control">
+						<option value="Laki-laki">Laki-laki</option>
+						<option value="Perempuan">Perempuan</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Kontak</label>
+					<input name="kontak" type="text" class="form-control" value="{{ data.user.kontak or "" }}"/>
+				</div>
+				<div class="form-group">
+					<label>Alamat</label>
+					<textarea name="alamat" class="form-control">{{ data.user.alamat or "" }}</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Simpan</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock body %}
+{% block footer %}{% endblock footer %}

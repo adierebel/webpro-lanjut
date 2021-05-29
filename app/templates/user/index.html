@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block body %}
+<div class="card mb-3">
+	<div class="card-body p-0">
+		<div class="p-3 border-bottom">
+			<form class="form-inline" method="GET">
+				<input type="text" class="form-control form-control-sm mr-sm-2" name="cari" placeholder="Cari" value="{{ data.cari or "" }}">
+				<button type="submit" class="btn btn-outline-primary btn-sm mr-3 mt-2 mt-sm-0"><i class="fa fa-search"></i></button>
+				<a href="{{ url_for('user_editor') }}" class="btn btn-primary btn-sm mr-2 mt-2 mt-sm-0"><i class="fa fa-plus mr-2"></i>Tambah</a>
+			</form>
+		</div>
+		<div class="table-responsive">
+			<table class="table m-0">
+				<thead>
+					<tr>
+						<th scope="col">Nama</th>
+						<th scope="col">Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% if data.users %}
+						{% for user in data.users %}
+							<tr>
+								<td>
+									{% if (data.user_id|string) == (user.id|string) %}
+										<a href="{{ url_for('user_pengaturan') }}">{{ user.nama_lengkap }}<span class="text-muted"> &mdash; Anda</span></a>
+									{% else %}
+										<a href="{{ url_for('user_detail', id_=user.id) }}">{{ user.nama_lengkap }}</a>
+									{% endif %}
+								</td>
+								<td>{{ user.email }}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						{% if data.cari %}
+							<tr><td colspan="2" class="text-muted text-center">Tidak ada hasil untuk <i>{{ data.cari }}</i></td></tr>
+						{% else %}
+							<tr><td colspan="2" class="text-muted text-center">Belum ada data</td></tr>
+						{% endif %}
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+{% block footer %}{% endblock footer %}
