@@ -1,0 +1,77 @@
+{% extends "box.html" %}
+{% block body %}
+<main>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<div class="card border-0 rounded-lg mt-4">
+					<div class="card-header bg-primary text-white border-primary border-bottom-0 py-4 px-3 d-print-none">
+						<h5 style="line-height:1;">Pendaftaran Karyawan</h5>
+						<div>PT Syifa Sejahtera Tbk.</div>
+					</div>
+					<div class="card-body border border-top-0 p-0">
+						<form method="POST">
+							<div class="p-3">
+								{% include "flash.html" %}
+								<div class="form-group">
+									<label>NIK</label>
+									<input name="nomor_induk" type="text" class="form-control" required/>
+								</div>
+								<div class="form-group">
+									<label>Nama Lengkap (Sesuai KTP)</label>
+									<input name="nama_lengkap" type="text" class="form-control" required/>
+								</div>
+								<div class="form-group">
+									<label>Jenis Kelamin</label>
+									<select name="jenis_kelamin" class="form-control">
+										<option value="Laki-laki">Laki-laki</option>
+										<option value="Perempuan">Perempuan</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tempat Lahir</label>
+									<input name="tempat_lahir" type="text" class="form-control" required/>
+								</div>
+								<div class="form-group">
+									<label>Tanggal Lahir</label>
+									<input name="tanggal_lahir" type="date" class="form-control" required/>
+								</div>
+								<div class="form-group mb-1">
+									<label>Alamat</label>
+									<textarea name="alamat_lengkap" class="form-control" required></textarea>
+								</div>
+							</div>
+							<div class="p-3 border-top">
+								<div class="form-group">
+									<label>Posisi Yang Dilamar</label>
+									<select name="posisi_dilamar" class="form-control" required>
+										{% for i in ['Admin Medsos', 'Staff IT', 'Helper'] %}
+											<option value="{{ i }}">{{ i }}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Nomor HP</label>
+									<input name="nomor_hp" type="text" class="form-control" required/>
+								</div>
+								<div class="form-group mb-4">
+									<label>Email</label>
+									<input name="alamat_email" type="email" class="form-control" required/>
+								</div>
+								<button type="submit" class="btn btn-block btn-lg btn-primary">Kirim</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="text-center pt-3 pb-3 d-print-none">
+					<a href="{{ url_for('karyawan_index') }}" class="text-primary">Admin Panel</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock body %}
+{% block footer %}
+	<script src="{{ url_for('static', filename='js/jquery-slim.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+{% endblock footer %}

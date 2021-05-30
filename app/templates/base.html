@@ -13,7 +13,7 @@
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
 			<div class="navbar-brand">
 				<button class="btn btn-link btn-sm text-white d-inline-block d-lg-none" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-				<a href="{{ url_for('index') }}" class="text-white d-none d-lg-inline-block">Karyawan</a>
+				<a href="/" class="text-white d-none d-lg-inline-block">Karyawan</a>
 			</div>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown">
@@ -33,13 +33,13 @@
 				<nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
 					<div class="sb-sidenav-menu pt-3">
 						<div class="nav">
-							<a class="nav-link {% if data.menu == 'pendaftar' %}active{% endif %}" href="{{ url_for('user_index') }}">
+							<a class="nav-link {% if data.menu == 'karyawan' %}active{% endif %}" href="{{ url_for('karyawan_index') }}">
 								<div class="sb-nav-link-icon" style="width:1.2rem;"><i class="fa fa-users text-primary"></i></div>
 								Pendaftar
 							</a>
 							<a class="nav-link {% if data.menu == 'user' %}active{% endif %}" href="{{ url_for('user_index') }}">
-								<div class="sb-nav-link-icon" style="width:1.2rem;"><i class="fa fa-user-cog text-primary"></i></div>
-								Pengguna
+								<div class="sb-nav-link-icon" style="width:1.2rem;"><i class="fa fa-user-tie text-primary"></i></div>
+								Admin
 							</a>
 						</div>
 					</div>

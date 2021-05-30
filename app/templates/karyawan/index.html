@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block body %}
+<div class="card mb-3">
+	<div class="card-body p-0">
+		<div class="p-3 border-bottom">
+			<form class="form-inline" method="GET">
+				<input type="text" class="form-control form-control-sm mr-sm-2" name="cari" placeholder="Cari" value="{{ data.cari or "" }}">
+				<button type="submit" class="btn btn-outline-primary btn-sm mr-3 mt-2 mt-sm-0"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+		<div class="table-responsive">
+			<table class="table m-0">
+				<thead>
+					<tr>
+						<th scope="col">Nama</th>
+						<th scope="col">NIK</th>
+						<th scope="col">Jenis Kelamin</th>
+						<th scope="col">Tanggal Lahir</th>
+						<th scope="col">Tanggal</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% if data.karyawan %}
+						{% for karyawan in data.karyawan %}
+							<tr>
+								<td><a href="{{ url_for('karyawan_detail', id_=karyawan.id) }}">{{ karyawan.nama_lengkap }}</a></td>
+								<td>{{ karyawan.nomor_induk }}</td>
+								<td>{{ karyawan.jenis_kelamin }}</td>
+								<td>{{ karyawan.tanggal_lahir }}</td>
+								<td>{{ karyawan.tanggal_daftar }}</td>
+								<td>{{ karyawan.status }}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						{% if data.cari %}
+							<tr><td colspan="6" class="text-muted text-center">Tidak ada hasil untuk <i>{{ data.cari }}</i></td></tr>
+						{% else %}
+							<tr><td colspan="6" class="text-muted text-center">Belum ada data</td></tr>
+						{% endif %}
+					{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+{% block footer %}{% endblock footer %}
