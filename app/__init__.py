@@ -22,4 +22,5 @@ db.init_app(app)
 
 # Import module
 from app.modules.middleware import *
+from app.modules.karyawan import *
 from app.modules.user import *

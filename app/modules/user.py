@@ -4,17 +4,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.modules.helper import login_required
 
 
-@app.route("/")
-def index():
-	return "OK"
-
-
 @app.route("/admin/user/")
 @login_required()
 def user_index():
 	# Data untuk tampilan
 	data_tampilan = {
-		"title": "Pengguna",
+		"title": "Admin",
 		"menu": "user"
 	}
 
@@ -46,7 +41,7 @@ def user_index():
 def user_editor(id_):
 	# Data untuk tampilan
 	data_tampilan = {
-		"title": "Tambah Pengguna",
+		"title": "Tambah Admin",
 		"menu": "user",
 		"user": {}
 	}
@@ -67,7 +62,7 @@ def user_editor(id_):
 
 	# Ubah
 	if user_result:
-		data_tampilan["title"] = "Ubah Pengguna"
+		data_tampilan["title"] = "Ubah Admin"
 
 	# Handle form ketika di submit
 	if request.method == "POST":
@@ -142,7 +137,7 @@ def user_editor(id_):
 def user_detail(id_):
 	# Data untuk tampilan
 	data_tampilan = {
-		"title": "Detail Pengguna",
+		"title": "Detail Admin",
 		"menu": "user"
 	}
 
@@ -274,7 +269,7 @@ def user_login():
 					# Set status user sudah login ke session
 					session['user_token'] = str(user_result.get("id"))
 					# Alihkan ke halaman utama jika login berhasil
-					return redirect(url_for("index"))
+					return redirect("/")
 				else:
 					flash("Password yang anda masukan salah", "gagal")
 			else:
@@ -291,7 +286,7 @@ def user_logout():
 	# Hapus session
 	session.pop('user_token', None)
 	# Alihkan ke halaman utama
-	return redirect(url_for("index"))
+	return redirect("/")
 
 
 @app.route("/user/init/")

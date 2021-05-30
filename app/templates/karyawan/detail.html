@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}{% endblock head %}
+{% block body %}
+<div class="card mb-4">
+	<div class="card-body p-0">
+		<div class="p-3">
+			<div class="text-muted small">NIK</div>
+			<div class="mb-2">{{ data.karyawan.nomor_induk or "-" }}</div>
+			<div class="text-muted small">Nama Lengkap</div>
+			<div class="mb-2">{{ data.karyawan.nama_lengkap or "-" }}</div>
+			<div class="text-muted small">Jenis Kelamin</div>
+			<div class="mb-2">{{ data.karyawan.jenis_kelamin or "-" }}</div>
+			<div class="text-muted small">Tempat Lahir</div>
+			<div class="mb-2">{{ data.karyawan.tempat_lahir or "-" }}</div>
+			<div class="text-muted small">Tanggal Lahir</div>
+			<div class="mb-2">{{ data.karyawan.tanggal_lahir or "-" }}</div>
+			<div class="text-muted small">Alamat</div>
+			<div class="mb-2">{{ data.karyawan.alamat_lengkap or "-" }}</div>
+			<hr>
+			<div class="text-muted small">Status</div>
+			<div class="mb-2">{{ data.karyawan.status or "-" }}</div>
+			<div class="text-muted small">Posisi Yang Dilamar</div>
+			<div class="mb-2">{{ data.karyawan.posisi_dilamar or "-" }}</div>
+			<div class="text-muted small">Nomor HP</div>
+			<div class="mb-2">{{ data.karyawan.nomor_hp or "-" }}</div>
+			<div class="text-muted small">Email</div>
+			<div class="mb-0">{{ data.karyawan.alamat_email or "-" }}</div>
+		</div>
+		<div class="border-top p-3">
+			<div class="row">
+				<div class="col-6">
+					<div class="dropdown">
+						<button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Status
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="{{ url_for('karyawan_detail', id_=data.karyawan.id, tindakan='interview') }}">Interview</a>
+							<a class="dropdown-item" href="{{ url_for('karyawan_detail', id_=data.karyawan.id, tindakan='diterima') }}">Diterima</a>
+							<a class="dropdown-item" href="{{ url_for('karyawan_detail', id_=data.karyawan.id, tindakan='ditolak') }}">Ditolak</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 text-right">
+					<a class="btn btn-sm btn-outline-danger" href="{{ url_for('karyawan_detail', id_=data.karyawan.id, tindakan='hapus') }}">Hapus</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+{% block footer %}{% endblock footer %}
