@@ -269,7 +269,7 @@ def user_login():
 					# Set status user sudah login ke session
 					session['user_token'] = str(user_result.get("id"))
 					# Alihkan ke halaman utama jika login berhasil
-					return redirect("/")
+					return redirect(url_for('karyawan_index'))
 				else:
 					flash("Password yang anda masukan salah", "gagal")
 			else:
